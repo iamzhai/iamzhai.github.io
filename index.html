@@ -71,6 +71,442 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-DataBaker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/01/21/DataBaker/" class="article-date">
+  <time class="dt-published" datetime="2026-01-21T15:42:07.000Z" itemprop="datePublished">2026-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/01/21/DataBaker/">DataBaker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>DataBaker 是一个专业的Unity配置数据管理工具,能够将Excel表格转换为CSV文件,并自动生成高效的二进制数据和对应的C#类。它采用<strong>注册表模式</strong>,无需反射机制,完美兼容WebGL、iOS等所有Unity平台。</p>
+<h3 id="核心优势"><a href="#核心优势" class="headerlink" title="核心优势"></a>核心优势</h3><ul>
+<li><strong>高性能</strong>: 使用GZip压缩的二进制格式,数据加载速度比纯CSV快5-10倍</li>
+<li><strong>低内存占用</strong>: 字符串池技术减少内存占用40-60%</li>
+<li><strong>零反射</strong>: 采用注册表模式,兼容AOT编译环境(WebGL&#x2F;iOS&#x2F;IL2CPP)</li>
+<li><strong>自动化</strong>: 一键生成C#类和二进制文件,集成Addressable资源管理</li>
+<li><strong>类型安全</strong>: 编译时类型检查,避免运行时错误</li>
+<li><strong>易维护</strong>: 添加新表只需一行注册代码</li>
+</ul>
+<hr>
+<h2 id="核心特性"><a href="#核心特性" class="headerlink" title="核心特性"></a>核心特性</h2><h3 id="1-Excel到CSV转换"><a href="#1-Excel到CSV转换" class="headerlink" title="1. Excel到CSV转换"></a>1. Excel到CSV转换</h3><ul>
+<li>使用Excel宏快速导出CSV文件</li>
+<li>支持复杂的Excel格式,包括公式、合并单元格等</li>
+<li>自动处理数据类型转换</li>
+</ul>
+<h3 id="2-CSV到二进制转换"><a href="#2-CSV到二进制转换" class="headerlink" title="2. CSV到二进制转换"></a>2. CSV到二进制转换</h3><ul>
+<li>GZip压缩算法,大幅减少文件体积</li>
+<li>自定义二进制格式,支持版本控制</li>
+<li>字符串池优化,减少重复字符串的存储</li>
+</ul>
+<h3 id="3-自动代码生成"><a href="#3-自动代码生成" class="headerlink" title="3. 自动代码生成"></a>3. 自动代码生成</h3><ul>
+<li>自动生成数据类,包含所有字段</li>
+<li>自动生成表格管理类,继承DataTableBase</li>
+<li>支持自定义命名空间</li>
+</ul>
+<h3 id="4-运行时管理"><a href="#4-运行时管理" class="headerlink" title="4. 运行时管理"></a>4. 运行时管理</h3><ul>
+<li>支持异步&#x2F;同步加载</li>
+<li>支持按需加载单个表或批量加载</li>
+<li>提供查询、筛选等数据操作API</li>
+<li>自动管理Addressable资源</li>
+</ul>
+<h3 id="5-支持的数据类型"><a href="#5-支持的数据类型" class="headerlink" title="5. 支持的数据类型"></a>5. 支持的数据类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+<th>数组支持</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>整数</td>
+<td>✅ int[]</td>
+</tr>
+<tr>
+<td>float</td>
+<td>单精度浮点</td>
+<td>✅ float[]</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度浮点</td>
+<td>✅ double[]</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>布尔值</td>
+<td>✅ bool[]</td>
+</tr>
+<tr>
+<td>string</td>
+<td>字符串</td>
+<td>✅ string[]</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><ul>
+<li>Unity 2020.3 或更高版本</li>
+<li>Addressables Asset System 1.21.19 或更高版本</li>
+<li>Microsoft Excel (用于CSV导出)</li>
+</ul>
+<hr>
+<h2 id="安装说明"><a href="#安装说明" class="headerlink" title="安装说明"></a>安装说明</h2><h3 id="方式一-Unity-Package-Manager"><a href="#方式一-Unity-Package-Manager" class="headerlink" title="方式一: Unity Package Manager"></a>方式一: Unity Package Manager</h3><ol>
+<li>打开Unity项目</li>
+<li>选择 <code>Window &gt; Package Manager</code></li>
+<li>点击左上角 <code>+</code> 号</li>
+<li>选择 <code>Add package by name</code></li>
+<li>输入包名: <code>com.databaker.core</code></li>
+<li>点击 <code>Add</code></li>
+</ol>
+<h3 id="方式二-手动导入"><a href="#方式二-手动导入" class="headerlink" title="方式二: 手动导入"></a>方式二: 手动导入</h3><ol>
+<li>下载DataBaker.unitypackage</li>
+<li>在Unity中双击导入</li>
+<li>或选择 <code>Assets &gt; Import Package &gt; Custom Package</code></li>
+</ol>
+<h3 id="方式三-从源码导入"><a href="#方式三-从源码导入" class="headerlink" title="方式三: 从源码导入"></a>方式三: 从源码导入</h3><ol>
+<li>将 <code>Assets/DataBaker</code> 文件夹复制到你的项目 <code>Assets</code> 目录下</li>
+<li>Unity会自动编译脚本</li>
+</ol>
+<h3 id="安装Addressables-如果未安装"><a href="#安装Addressables-如果未安装" class="headerlink" title="安装Addressables (如果未安装)"></a>安装Addressables (如果未安装)</h3><ol>
+<li>打开 <code>Window &gt; Package Manager</code></li>
+<li>选择 <code>Unity Registry</code></li>
+<li>搜索 <code>Addressables</code></li>
+<li>点击 <code>Install</code></li>
+</ol>
+<hr>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="第一步-创建Excel表格"><a href="#第一步-创建Excel表格" class="headerlink" title="第一步: 创建Excel表格"></a>第一步: 创建Excel表格</h3><p>创建一个Excel文件,包含以下格式的数据:</p>
+<table>
+<thead>
+<tr>
+<th>行号</th>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>字段名称</td>
+<td>如: Id,Name,Count</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字段类型</td>
+<td>如: int,string,int[]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>默认值</td>
+<td>可选的默认值</td>
+</tr>
+<tr>
+<td>4+</td>
+<td>数据行</td>
+<td>实际配置数据</td>
+</tr>
+</tbody></table>
+<p><strong>示例表格内容:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Id,Name,Level,Attack,Skills</span><br><span class="line">int,string,int,int,string[]</span><br><span class="line">0,&quot;新手&quot;,1,10,&quot;[]&quot;</span><br><span class="line">1,&quot;战士&quot;,10,50,&quot;[冲锋,斩击]&quot;</span><br><span class="line">2,&quot;法师&quot;,15,80,&quot;[火球,冰霜,闪电]&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第二步-编辑数据并自动导出CSV"><a href="#第二步-编辑数据并自动导出CSV" class="headerlink" title="第二步: 编辑数据并自动导出CSV"></a>第二步: 编辑数据并自动导出CSV</h3><p>DataBaker 提供了集成了宏的Excel模板,可以自动将数据导出为CSV文件:</p>
+<ol>
+<li>打开 <code>Assets/DataBaker/Tables/conf~/excel</code> 目录下的Excel模板文档（.xlsm格式）</li>
+<li>根据第一步的格式要求编辑数据</li>
+<li><strong>保存Excel文件时,宏会自动将当前工作表导出为CSV文件到 <code>Assets/DataBaker/Tables</code> 目录</strong></li>
+<li>CSV文件名与工作表名称一致</li>
+</ol>
+<p><strong>注意事项:</strong></p>
+<ul>
+<li>Excel文件必须启用宏功能（启用内容）</li>
+<li>只保存当前活动的工作表为CSV</li>
+<li>如果有多个工作表,每个工作表会生成对应的CSV文件</li>
+<li>CSV文件会覆盖同名文件,请确保工作表名称正确</li>
+</ul>
+<h3 id="第三步-生成代码和二进制文件"><a href="#第三步-生成代码和二进制文件" class="headerlink" title="第三步: 生成代码和二进制文件"></a>第三步: 生成代码和二进制文件</h3><ol>
+<li>打开DataBaker编辑器: <code>Tools &gt; DataBaker &gt; CSV Generator</code></li>
+<li>配置路径:<ul>
+<li><strong>CSV Folder Path</strong>: 放置CSV文件的目录</li>
+<li><strong>C# Class Output Path</strong>: 生成的C#类输出目录</li>
+<li><strong>Binary File Path</strong>: 生成的二进制文件输出目录</li>
+</ul>
+</li>
+<li>选择要处理的CSV文件</li>
+<li>点击 <code>Generate All</code> 按钮</li>
+<li>等待生成完成</li>
+</ol>
+<h3 id="第四步-注册表格"><a href="#第四步-注册表格" class="headerlink" title="第四步: 注册表格"></a>第四步: 注册表格</h3><p>打开 <code>CSVTableRegistry.cs</code>,在 <code>RegisterTables()</code> 方法中添加:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RegisterTables</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    _tables.Clear();</span><br><span class="line">    _tableDict.Clear();</span><br><span class="line">    </span><br><span class="line">    Debug.Log(<span class="string">&quot;=== Starting to register configuration tables ===&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 手动注册所有配置表</span></span><br><span class="line">    <span class="comment">// 添加新表后在这里添加一行注册代码: RegisterTable(YourTable.Instance);</span></span><br><span class="line">    RegisterTable(DataBaker.Generated.TestDataTable.Instance);</span><br><span class="line">    </span><br><span class="line">    Debug.Log(<span class="string">$&quot;=== Configuration tables registration completed, total <span class="subst">&#123;_tables.Count&#125;</span> tables ===&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第五步-加载配置数据"><a href="#第五步-加载配置数据" class="headerlink" title="第五步: 加载配置数据"></a>第五步: 加载配置数据</h3><h4 id="方式A-使用GameConfigLoader-推荐"><a href="#方式A-使用GameConfigLoader-推荐" class="headerlink" title="方式A: 使用GameConfigLoader (推荐)"></a>方式A: 使用GameConfigLoader (推荐)</h4><p>将 <code>GameConfigLoader</code> 脚本添加到启动场景中:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DataBaker.Runtime;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        GameConfigLoader.OnConfigsLoaded += OnConfigsLoaded;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnDestroy</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        GameConfigLoader.OnConfigsLoaded -= OnConfigsLoaded;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnConfigsLoaded</span>(<span class="params"><span class="built_in">bool</span> success</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (success)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;配置加载成功,开始游戏逻辑&quot;</span>);</span><br><span class="line">            <span class="comment">// 开始你的游戏逻辑</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(<span class="string">&quot;配置加载失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方式B-手动加载"><a href="#方式B-手动加载" class="headerlink" title="方式B: 手动加载"></a>方式B: 手动加载</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DataBaker.Runtime;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ConfigLoader</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">async</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 初始化管理器</span></span><br><span class="line">        CSVTableManager.Instance.Initialize();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 加载所有配置表</span></span><br><span class="line">        <span class="built_in">bool</span> success = <span class="keyword">await</span> CSVTableManager.Instance.LoadAllTablesAsync();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (success)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;配置加载成功&quot;</span>);</span><br><span class="line">            <span class="comment">// 开始游戏逻辑</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第六步-使用配置数据"><a href="#第六步-使用配置数据" class="headerlink" title="第六步: 使用配置数据"></a>第六步: 使用配置数据</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过ID获取单个数据</span></span><br><span class="line"><span class="keyword">var</span> itemData = CSVTableManager.Instance.GetData&lt;ItemData&gt;(<span class="string">&quot;Item&quot;</span>, <span class="number">1001</span>);</span><br><span class="line"><span class="keyword">if</span> (itemData != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">$&quot;物品名称: <span class="subst">&#123;itemData.Name&#125;</span>&quot;</span>);</span><br><span class="line">    Debug.Log(<span class="string">$&quot;价格: <span class="subst">&#123;itemData.Price&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取所有数据</span></span><br><span class="line"><span class="keyword">var</span> allItems = CSVTableManager.Instance.GetAllData&lt;ItemData&gt;(<span class="string">&quot;Item&quot;</span>);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> allItems)</span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">$&quot;ID: <span class="subst">&#123;item.Id&#125;</span>, Name: <span class="subst">&#123;item.Name&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取表对象</span></span><br><span class="line"><span class="keyword">var</span> itemTable = CSVTableManager.Instance.GetTable&lt;ItemDataTable&gt;(<span class="string">&quot;Item&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (itemTable != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> item = itemTable.GetInstance(<span class="number">1001</span>);</span><br><span class="line">    <span class="keyword">var</span> allData = itemTable.GetAllData();</span><br><span class="line">    <span class="keyword">var</span> expensiveItems = itemTable.FindData(x =&gt; x.Price &gt; <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="CSV格式规范"><a href="#CSV格式规范" class="headerlink" title="CSV格式规范"></a>CSV格式规范</h2><h3 id="CSV文件结构"><a href="#CSV文件结构" class="headerlink" title="CSV文件结构"></a>CSV文件结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 第1行: 字段名称 (必须以Id开头)</span><br><span class="line">Id,Name,Level,Attack,Skills</span><br><span class="line"></span><br><span class="line">// 第2行: 字段类型</span><br><span class="line">int,string,int,int,string[]</span><br><span class="line"></span><br><span class="line">// 第3行: 默认值 (可选)</span><br><span class="line">0,&quot;&quot;,0,0,&quot;[]&quot;</span><br><span class="line"></span><br><span class="line">// 第4行及以后: 数据行</span><br><span class="line">1,&quot;战士&quot;,10,50,&quot;[冲锋,斩击]&quot;</span><br><span class="line">2,&quot;法师&quot;,15,80,&quot;[火球,冰霜,闪电]&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字段类型规范"><a href="#字段类型规范" class="headerlink" title="字段类型规范"></a>字段类型规范</h3><table>
+<thead>
+<tr>
+<th>类型标识</th>
+<th>C#类型</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int &#x2F; integer</td>
+<td>int</td>
+<td>100, -50</td>
+</tr>
+<tr>
+<td>float &#x2F; single</td>
+<td>float</td>
+<td>3.14, -0.5</td>
+</tr>
+<tr>
+<td>double &#x2F; decimal</td>
+<td>double</td>
+<td>3.14159</td>
+</tr>
+<tr>
+<td>bool &#x2F; boolean</td>
+<td>bool</td>
+<td>true, false</td>
+</tr>
+<tr>
+<td>string &#x2F; text</td>
+<td>string</td>
+<td>“Hello World”</td>
+</tr>
+<tr>
+<td>int[]</td>
+<td>int[]</td>
+<td>“[1,2,3]”</td>
+</tr>
+<tr>
+<td>float[]</td>
+<td>float[]</td>
+<td>“[1.5,2.5,3.5]”</td>
+</tr>
+<tr>
+<td>string[]</td>
+<td>string[]</td>
+<td>“[a,b,c]”</td>
+</tr>
+</tbody></table>
+<h3 id="重要规则"><a href="#重要规则" class="headerlink" title="重要规则"></a>重要规则</h3><ol>
+<li><strong>必须以Id字段开头</strong>: 第一列必须是Id,类型为int</li>
+<li><strong>字段名称和类型必须匹配</strong>: 第1行的字段数必须等于第2行的类型数</li>
+<li><strong>数组格式</strong>: 数组值必须使用方括号 <code>[]</code> 包裹,元素用逗号分隔</li>
+<li><strong>字符串包含逗号</strong>: 如果字符串中包含逗号,请用双引号包裹</li>
+<li><strong>空值</strong>: 使用空字符串 <code>&quot;&quot;</code> 表示空值</li>
+</ol>
+<h3 id="示例CSV文件"><a href="#示例CSV文件" class="headerlink" title="示例CSV文件"></a>示例CSV文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Id,Name,Description,Level,Exp,Attributes,IsActive,Tags</span><br><span class="line">int,string,string,int,int,int[],bool,string[]</span><br><span class="line">0,&quot;&quot;,&quot;&quot;,0,0,&quot;[]&quot;,false,&quot;[]&quot;</span><br><span class="line">1,&quot;生命药水&quot;,&quot;恢复100点生命值&quot;,1,0,&quot;[100,0,0]&quot;,true,&quot;[消耗,药品]&quot;</span><br><span class="line">2,&quot;魔法药水&quot;,&quot;恢复50点魔法值&quot;,1,0,&quot;[0,50,0]&quot;,true,&quot;[消耗,药品]&quot;</span><br><span class="line">3,&quot;青铜剑&quot;,&quot;基础攻击力+15&quot;,5,100,&quot;[0,0,15]&quot;,true,&quot;[装备,武器]&quot;</span><br><span class="line">4,&quot;铁甲&quot;,&quot;基础防御力+20&quot;,10,200,&quot;[0,20,0]&quot;,true,&quot;[装备,防具]&quot;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="API参考"><a href="#API参考" class="headerlink" title="API参考"></a>API参考</h2><h3 id="CSVTableManager"><a href="#CSVTableManager" class="headerlink" title="CSVTableManager"></a>CSVTableManager</h3><p>配置表管理器,负责所有配置表的加载和管理。</p>
+<h4 id="主要属性"><a href="#主要属性" class="headerlink" title="主要属性"></a>主要属性</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单例实例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> CSVTableManager Instance &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 是否已初始化</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">bool</span> IsInitialized &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 已加载的表数量</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> LoadedTableCount &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 总表数量</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> TotalTableCount &#123; <span class="keyword">get</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="主要方法"><a href="#主要方法" class="headerlink" title="主要方法"></a>主要方法</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化管理器</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Initialize</span>()</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 异步加载所有配置表</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Task</span>&lt;<span class="title">bool</span>&gt; <span class="title">LoadAllTablesAsync</span>()</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 异步加载指定表</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Task</span>&lt;<span class="title">bool</span>&gt; <span class="title">LoadTableAsync</span>(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 通过ID获取数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">GetData</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> tableAssetLabel, <span class="built_in">int</span> id</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 获取表的所有数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">List</span>&lt;<span class="title">T</span>&gt; <span class="title">GetAllData</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> tableAssetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 获取表对象</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IDataTable <span class="title">GetTable</span>(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> TTable <span class="title">GetTable</span>&lt;<span class="title">TTable</span>&gt;(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 检查表是否已加载</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">IsTableLoaded</span>(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 卸载指定表</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UnloadTable</span>(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 卸载所有表</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UnloadAllTables</span>()</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 重新加载表</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Task&lt;<span class="built_in">bool</span>&gt; <span class="title">ReloadTableAsync</span>(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 获取已加载表信息</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">GetLoadedTableInfo</span>()</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="DataTableBase"><a href="#DataTableBase" class="headerlink" title="DataTableBase"></a>DataTableBase<T></h3><p>数据表基类,所有生成的表管理类都继承此类。</p>
+<h4 id="主要属性-1"><a href="#主要属性-1" class="headerlink" title="主要属性"></a>主要属性</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 是否已加载</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">bool</span> IsLoaded &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据数量</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> Count &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Addressable标签 (子类实现)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="built_in">string</span> AssetLabel &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二进制资源键 (子类实现)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="built_in">string</span> BinaryAssetKey &#123; <span class="keyword">get</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="主要方法-1"><a href="#主要方法-1" class="headerlink" title="主要方法"></a>主要方法</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 异步加载数据</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Task&lt;<span class="built_in">bool</span>&gt; <span class="title">LoadAsync</span>()</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 同步加载数据 (协程)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IEnumerator <span class="title">LoadSync</span>(<span class="params">Action onComplete = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 通过ID获取数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">GetInstance</span>(<span class="params"><span class="built_in">int</span> id</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 获取所有数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;T&gt; <span class="title">GetAllData</span>()</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 根据条件查找数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;T&gt; <span class="title">FindData</span>(<span class="params">Func&lt;T, <span class="built_in">bool</span>&gt; predicate</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 查找第一个匹配的数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">FindFirst</span>(<span class="params">Func&lt;T, <span class="built_in">bool</span>&gt; predicate</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 检查是否包含指定ID</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">Contains</span>(<span class="params"><span class="built_in">int</span> id</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 卸载数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Unload</span>()</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 重新加载</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Task&lt;<span class="built_in">bool</span>&gt; <span class="title">ReloadAsync</span>()</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CSVTableRegistry"><a href="#CSVTableRegistry" class="headerlink" title="CSVTableRegistry"></a>CSVTableRegistry</h3><p>配置表注册中心,管理所有表实例。</p>
+<h4 id="主要属性-2"><a href="#主要属性-2" class="headerlink" title="主要属性"></a>主要属性</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单例实例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> CSVTableRegistry Instance &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 总表数量</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> TotalTableCount &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 已加载表数量</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> LoadedTableCount &#123; <span class="keyword">get</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="主要方法-2"><a href="#主要方法-2" class="headerlink" title="主要方法"></a>主要方法</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注册所有表 (手动添加注册代码)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RegisterTables</span>()</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 获取所有表</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">List</span>&lt;<span class="title">IDataTable</span>&gt; <span class="title">GetAllTables</span>()</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 通过标签获取表</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> IDataTable <span class="title">GetTable</span>(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 获取指定类型的表</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">GetTable</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 通过ID获取数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">GetData</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> tableAssetLabel, <span class="built_in">int</span> id</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 获取表的所有数据</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">List</span>&lt;<span class="title">T</span>&gt; <span class="title">GetAllData</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">string</span> tableAssetLabel</span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 检查表是否已加载</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">IsTableLoaded</span>(<span class="params"><span class="built_in">string</span> assetLabel</span>)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h2><h3 id="自定义命名空间"><a href="#自定义命名空间" class="headerlink" title="自定义命名空间"></a>自定义命名空间</h3><ol>
+<li>打开CSV Generator窗口</li>
+<li>勾选 <code>Use Namespace</code></li>
+<li>输入你的命名空间,例如: <code>MyGame.Config</code></li>
+<li>生成的类将使用该命名空间</li>
+</ol>
+<h3 id="按需加载"><a href="#按需加载" class="headerlink" title="按需加载"></a>按需加载</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只加载需要的表</span></span><br><span class="line"><span class="keyword">await</span> CSVTableManager.Instance.LoadTableAsync(<span class="string">&quot;Item&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载完成后使用</span></span><br><span class="line"><span class="keyword">var</span> itemData = CSVTableManager.Instance.GetData&lt;ItemData&gt;(<span class="string">&quot;Item&quot;</span>, <span class="number">1001</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="卸载不用的表"><a href="#卸载不用的表" class="headerlink" title="卸载不用的表"></a>卸载不用的表</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 卸载单个表</span></span><br><span class="line">CSVTableManager.Instance.UnloadTable(<span class="string">&quot;Item&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 卸载所有表</span></span><br><span class="line">CSVTableManager.Instance.UnloadAllTables();</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据筛选和查询"><a href="#数据筛选和查询" class="headerlink" title="数据筛选和查询"></a>数据筛选和查询</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> itemTable = CSVTableManager.Instance.GetTable&lt;ItemDataTable&gt;(<span class="string">&quot;Item&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找价格大于1000的物品</span></span><br><span class="line"><span class="keyword">var</span> expensiveItems = itemTable.FindData(x =&gt; x.Price &gt; <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找名称包含&quot;剑&quot;的物品</span></span><br><span class="line"><span class="keyword">var</span> swords = itemTable.FindData(x =&gt; x.Name.Contains(<span class="string">&quot;剑&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找第一个匹配条件的物品</span></span><br><span class="line"><span class="keyword">var</span> firstWeapon = itemTable.FindFirst(x =&gt; x.Tags.Contains(<span class="string">&quot;武器&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="异步-同步加载"><a href="#异步-同步加载" class="headerlink" title="异步&#x2F;同步加载"></a>异步&#x2F;同步加载</h3><h4 id="异步加载-推荐"><a href="#异步加载-推荐" class="headerlink" title="异步加载 (推荐)"></a>异步加载 (推荐)</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">async</span> <span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">bool</span> success = <span class="keyword">await</span> CSVTableManager.Instance.LoadAllTablesAsync();</span><br><span class="line">    <span class="keyword">if</span> (success)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 使用数据</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="同步加载-协程"><a href="#同步加载-协程" class="headerlink" title="同步加载 (协程)"></a>同步加载 (协程)</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> itemTable = CSVTableManager.Instance.GetTable&lt;ItemDataTable&gt;(<span class="string">&quot;Item&quot;</span>);</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> itemTable.LoadSync(() =&gt; </span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;加载完成&quot;</span>);</span><br><span class="line">        <span class="comment">// 使用数据</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="调试信息"><a href="#调试信息" class="headerlink" title="调试信息"></a>调试信息</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打印所有表的加载状态</span></span><br><span class="line"><span class="built_in">string</span> info = CSVTableManager.Instance.GetLoadedTableInfo();</span><br><span class="line">Debug.Log(info);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行时查看GameConfigLoader的调试UI</span></span><br><span class="line"><span class="comment">// 点击&quot;Print Load Status&quot;按钮查看详细信息</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q1-Addressable设置未找到"><a href="#Q1-Addressable设置未找到" class="headerlink" title="Q1: Addressable设置未找到"></a>Q1: Addressable设置未找到</h3><p><strong>问题</strong>: 提示 “Addressable settings not found”</p>
+<p><strong>解决</strong>:</p>
+<ol>
+<li>确保 Addressables 包已正确安装</li>
+<li>打开 <code>Window &gt; Asset Management &gt; Addressables &gt; Groups</code></li>
+<li>确保Addressables Asset Settings已创建</li>
+</ol>
+<h3 id="Q2-CSV文件格式错误"><a href="#Q2-CSV文件格式错误" class="headerlink" title="Q2: CSV文件格式错误"></a>Q2: CSV文件格式错误</h3><p><strong>问题</strong>: 提示 “CSV file format error”</p>
+<p><strong>解决</strong>:</p>
+<ul>
+<li>确保CSV至少有4行(字段名、类型、默认值、数据)</li>
+<li>第一字段必须是Id</li>
+<li>字段名和类型数量必须匹配</li>
+<li>确保CSV使用UTF-8编码</li>
+</ul>
+<h3 id="Q3-生成的代码报错"><a href="#Q3-生成的代码报错" class="headerlink" title="Q3: 生成的代码报错"></a>Q3: 生成的代码报错</h3><p><strong>问题</strong>: 生成的C#类有编译错误</p>
+<p><strong>解决</strong>:</p>
+<ul>
+<li>检查CSV中的类型标识是否正确</li>
+<li>确保数组值使用正确的格式 <code>[1,2,3]</code></li>
+<li>检查字符串是否包含未转义的引号</li>
+</ul>
+<h3 id="Q4-数据加载失败"><a href="#Q4-数据加载失败" class="headerlink" title="Q4: 数据加载失败"></a>Q4: 数据加载失败</h3><p><strong>问题</strong>: 运行时提示数据加载失败</p>
+<p><strong>解决</strong>:</p>
+<ul>
+<li>检查Addressable Group中的资源路径是否正确</li>
+<li>确保二进制文件已生成</li>
+<li>检查Addressable Label是否与CSV文件名一致</li>
+<li>查看Console中的详细错误信息</li>
+</ul>
+<h3 id="Q5-WebGL平台数据加载问题"><a href="#Q5-WebGL平台数据加载问题" class="headerlink" title="Q5: WebGL平台数据加载问题"></a>Q5: WebGL平台数据加载问题</h3><p><strong>问题</strong>: WebGL上数据无法加载</p>
+<p><strong>解决</strong>:</p>
+<ul>
+<li>确保Addressables配置正确</li>
+<li>检查压缩设置</li>
+<li>确保Addressables服务器已启动(开发模式)</li>
+</ul>
+<h3 id="Q6-如何更新已存在的表"><a href="#Q6-如何更新已存在的表" class="headerlink" title="Q6: 如何更新已存在的表?"></a>Q6: 如何更新已存在的表?</h3><p><strong>解决</strong>:</p>
+<ol>
+<li>修改Excel数据</li>
+<li>重新导出CSV</li>
+<li>在CSV Generator中点击 <code>Generate All</code></li>
+<li>Unity会自动刷新资源和脚本</li>
+</ol>
+<h3 id="Q7-能否支持嵌套数据结构"><a href="#Q7-能否支持嵌套数据结构" class="headerlink" title="Q7: 能否支持嵌套数据结构?"></a>Q7: 能否支持嵌套数据结构?</h3><p><strong>解决</strong>:<br>目前不支持嵌套类。建议:</p>
+<ul>
+<li>使用数组类型存储相关数据</li>
+<li>或者将复杂数据拆分为多个表</li>
+<li>使用ID建立表之间的关联</li>
+</ul>
+<h3 id="Q8-如何支持Excel中的公式"><a href="#Q8-如何支持Excel中的公式" class="headerlink" title="Q8: 如何支持Excel中的公式?"></a>Q8: 如何支持Excel中的公式?</h3><p><strong>解决</strong>:<br>DataBaker不支持Excel公式,因为CSV只存储值。建议:</p>
+<ol>
+<li>在Excel中使用公式计算</li>
+<li>使用”复制-选择性粘贴-值”将公式结果转换为固定值</li>
+<li>然后再导出为CSV</li>
+</ol>
+<h3 id="Q9-生成的文件太大"><a href="#Q9-生成的文件太大" class="headerlink" title="Q9: 生成的文件太大?"></a>Q9: 生成的文件太大?</h3><p><strong>解决</strong>:<br>DataBaker使用GZip压缩,已经非常高效。如果仍然太大:</p>
+<ul>
+<li>考虑拆分大表为多个小表</li>
+<li>减少不必要的字符串字段</li>
+<li>使用数值枚举代替字符串</li>
+</ul>
+<h3 id="Q10-多人协作时的冲突处理"><a href="#Q10-多人协作时的冲突处理" class="headerlink" title="Q10: 多人协作时的冲突处理?"></a>Q10: 多人协作时的冲突处理?</h3><p><strong>解决</strong>:<br>建议:</p>
+<ol>
+<li>使用Excel的”共享工作簿”功能</li>
+<li>指定专人负责维护配置表</li>
+<li>使用版本控制系统管理CSV文件</li>
+<li>配置表更新时通知团队成员</li>
+</ol>
+<hr>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="1-表设计原则"><a href="#1-表设计原则" class="headerlink" title="1. 表设计原则"></a>1. 表设计原则</h3><ul>
+<li>使用有意义的字段名称(英文)</li>
+<li>保持字段类型一致</li>
+<li>合理使用默认值</li>
+<li>为相关字段添加注释</li>
+</ul>
+<h3 id="2-数据组织"><a href="#2-数据组织" class="headerlink" title="2. 数据组织"></a>2. 数据组织</h3><ul>
+<li>按功能模块划分表</li>
+<li>单个表不宜过大(&lt;1000行)</li>
+<li>合理使用数组减少表数量</li>
+<li>建立表之间的关联关系</li>
+</ul>
+<h3 id="3-命名规范"><a href="#3-命名规范" class="headerlink" title="3. 命名规范"></a>3. 命名规范</h3><ul>
+<li><strong>CSV文件名</strong>: PascalCase (如: ItemData.csv)</li>
+<li><strong>字段名</strong>: PascalCase (如: ItemName)</li>
+<li><strong>类名</strong>: 自动从文件名生成 (如: ItemData, ItemDataTable)</li>
+</ul>
+<h3 id="4-性能优化"><a href="#4-性能优化" class="headerlink" title="4. 性能优化"></a>4. 性能优化</h3><ul>
+<li>按需加载,不要一次性加载所有表</li>
+<li>及时卸载不用的表</li>
+<li>缓存常用数据引用</li>
+<li>使用FindData而不是遍历</li>
+</ul>
+<h3 id="5-版本控制"><a href="#5-版本控制" class="headerlink" title="5. 版本控制"></a>5. 版本控制</h3><ul>
+<li>将CSV文件纳入版本控制</li>
+<li>生成的C#类也纳入版本控制</li>
+<li>二进制文件通常不纳入版本控制(使用.gitignore)</li>
+<li>记录每次配置变更的原因</li>
+</ul>
+<hr>
+<h2 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h2><p>本插件受 <strong>Unity Asset Store End User License Agreement</strong> 约束。</p>
+<p>通过购买或使用本插件,您同意遵守 <a target="_blank" rel="noopener" href="https://unity3d.com/legal/as_terms">Unity Asset Store 服务条款</a>。</p>
+<h3 id="使用许可"><a href="#使用许可" class="headerlink" title="使用许可"></a>使用许可</h3><ul>
+<li>在任意数量的商业或个人项目中使用</li>
+<li>修改源代码以适应您的项目需求</li>
+<li>将插件打包到最终发布的游戏产品中</li>
+</ul>
+<h3 id="使用限制"><a href="#使用限制" class="headerlink" title="使用限制"></a>使用限制</h3><ul>
+<li>不得转售、分发或共享源代码</li>
+<li>不得声称本插件是您自己的作品</li>
+<li>不得用于创建竞争性产品</li>
+</ul>
+<hr>
+<hr>
+<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul>
+<li>问题反馈: <a href="mailto:&#x7a;&#x68;&#x61;&#x69;&#x6a;&#105;&#x61;&#x6e;&#x77;&#x65;&#x69;&#53;&#48;&#x32;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#x6f;&#109;">zhaijianwei502@163.com</a></li>
+<li>个人博客: <a target="_blank" rel="noopener" href="https://iamzhai.github.io/">https://iamzhai.github.io/</a></li>
+</ul>
+<hr>
+<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><ul>
+<li>感谢Unity引擎提供强大的开发环境</li>
+<li>感谢Addressables团队提供的优秀资源管理系统</li>
+<li>感谢所有使用和改进DataBaker的开发者</li>
+</ul>
+<hr>
+<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h3 id="v1-0-0-2025-01-18"><a href="#v1-0-0-2025-01-18" class="headerlink" title="v1.0.0 (2025-01-18)"></a>v1.0.0 (2025-01-18)</h3><ul>
+<li>初始版本发布</li>
+<li>支持CSV到二进制转换</li>
+<li>自动生成C#类和表管理器</li>
+<li>集成Addressable资源管理</li>
+<li>支持多种数据类型和数组</li>
+<li>注册表模式,零反射</li>
+<li>完美兼容WebGL和iOS平台</li>
+</ul>
+<hr>
+<p><strong>让配置管理变得简单高效!</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/01/21/DataBaker/" data-id="cuiddBx-GkVnCulBJwOu5Gx5C" data-title="DataBaker" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-AnimaFlow-UI" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/01/21/AnimaFlow-UI/" class="article-date">
@@ -543,7 +979,7 @@
 <li><strong>查看示例场景</strong>: 在<code>Assets/AnimaFlowUI/Samples/</code>中查看完整示例</li>
 <li><strong>API文档</strong>: 参考本文档的API部分</li>
 <li><strong>作者博客</strong>: <a target="_blank" rel="noopener" href="https://iamzhai.github.io/">https://iamzhai.github.io/</a></li>
-<li><strong>联系邮箱</strong>: <a href="mailto:&#x7a;&#104;&#x61;&#x69;&#106;&#105;&#x61;&#110;&#x77;&#101;&#105;&#53;&#48;&#50;&#x40;&#x31;&#x36;&#51;&#x2e;&#99;&#111;&#109;">zhaijianwei502@163.com</a></li>
+<li><strong>联系邮箱</strong>: <a href="mailto:&#x7a;&#x68;&#x61;&#x69;&#x6a;&#105;&#x61;&#x6e;&#119;&#x65;&#x69;&#53;&#48;&#x32;&#64;&#49;&#54;&#x33;&#46;&#99;&#111;&#x6d;">zhaijianwei502@163.com</a></li>
 </ol>
 <hr>
 <p><strong>AnimaFlow UI</strong> - 让UI开发变得更简单！</p>
@@ -551,7 +987,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/21/AnimaFlow-UI/" data-id="cuidijYpb88K5PRmwC4_RjU6B" data-title="AnimaFlow UI" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/01/21/AnimaFlow-UI/" data-id="cuidzNsCeT-itetO3UEFizXIO" data-title="AnimaFlow UI" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -592,6 +1028,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/01/21/DataBaker/">DataBaker</a>
+          </li>
         
           <li>
             <a href="/2026/01/21/AnimaFlow-UI/">AnimaFlow UI</a>
