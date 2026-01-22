@@ -1,101 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>AnimaFlow UI | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="一个功能强大、易于使用的Unity UI管理和动画框架  目录 框架概述 快速开始 核心功能 API文档 示例代码 最佳实践 常见问题  框架概述AnimaFlow UI是一个专为Unity开发的UI管理框架，提供完整的UI生命周期管理、丰富的动画效果和性能优化。 主要特性 双模式管理: 支持单例UI和多重实例UI 丰富动画: 位移、缩放、透明度、旋转四种动画类型 智能资源管理: 集成Addre">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一个功能强大、易于使用的Unity UI管理和动画框架  目录 框架概述 快速开始 核心功能 API文档 示例代码 最佳实践 常见问题  框架概述AnimaFlow UI是一个专为Unity开发的UI管理框架，提供完整的UI生命周期管理、丰富的动画效果和性能优化。 主要特性 双模式管理: 支持单例UI和多重实例UI 丰富动画: 位移、缩放、透明度、旋转四种动画类型 智能资源管理: 集成Addre">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AnimaFlow UI">
 <meta property="og:url" content="http://example.com/2026/01/21/AnimaFlow-UI/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Vertext Log">
 <meta property="og:description" content="一个功能强大、易于使用的Unity UI管理和动画框架  目录 框架概述 快速开始 核心功能 API文档 示例代码 最佳实践 常见问题  框架概述AnimaFlow UI是一个专为Unity开发的UI管理框架，提供完整的UI生命周期管理、丰富的动画效果和性能优化。 主要特性 双模式管理: 支持单例UI和多重实例UI 丰富动画: 位移、缩放、透明度、旋转四种动画类型 智能资源管理: 集成Addre">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-21T15:16:04.000Z">
 <meta property="article:modified_time" content="2026-01-21T15:26:20.142Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="MrZhai">
 <meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2026/01/21/AnimaFlow-UI/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/21/AnimaFlow-UI/","path":"2026/01/21/AnimaFlow-UI/","title":"AnimaFlow UI"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>AnimaFlow UI | Vertext Log</title>
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+
+
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
 
   
+
+
+
+
+
+
   
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
-<meta name="generator" content="Hexo 8.1.1"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Vertext Log</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">框架概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">主要特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="nav-number">2.2.</span> <span class="nav-text">依赖项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">3.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">1. 环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%9C%BA%E6%99%AF%E8%AE%BE%E7%BD%AE%EF%BC%88%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">2. 场景设置（自动化）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8%E7%BC%96%E8%BE%91%E5%99%A8%E8%8F%9C%E5%8D%95%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89%EF%BC%8C%E4%B9%9F%E5%8F%AF%E6%89%8B%E5%8A%A8"><span class="nav-number">3.2.1.</span> <span class="nav-text">方法：使用编辑器菜单（推荐），也可手动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8A%9F%E8%83%BD%E5%8C%85%E6%8B%AC%EF%BC%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">自动创建的功能包括：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">3.3.</span> <span class="nav-text">3. 基本使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">核心功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-UI%E5%B1%82%E7%BA%A7%E7%B3%BB%E7%BB%9F-UILayer"><span class="nav-number">4.1.</span> <span class="nav-text">1. UI层级系统 (UILayer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-UI%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">2. UI动画系统配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%B7%BB%E5%8A%A0%E9%9D%A2%E6%9D%BF%E5%8A%A8%E7%94%BB%E7%BB%84%E4%BB%B6"><span class="nav-number">4.2.1.</span> <span class="nav-text">2.1 添加面板动画组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E6%B7%BB%E5%8A%A0%E5%8A%A8%E7%94%BB%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%99%A8"><span class="nav-number">4.2.2.</span> <span class="nav-text">2.2 添加动画事件监听器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%B7%BB%E5%8A%A0%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8A%A8%E7%94%BB"><span class="nav-number">4.2.3.</span> <span class="nav-text">2.3 添加子组件动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E5%8A%A8%E7%94%BB%E7%BB%84%E4%BB%B6%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">4.2.4.</span> <span class="nav-text">2.4 动画组件关系图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.3.</span> <span class="nav-text">动画系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E8%AE%BE%E5%8A%A8%E7%94%BB%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.3.1.</span> <span class="nav-text">预设动画类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API%E6%96%87%E6%A1%A3"><span class="nav-number">5.</span> <span class="nav-text">API文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UISingletonManager-%E5%8D%95%E4%BE%8BUI%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">5.1.</span> <span class="nav-text">UISingletonManager - 单例UI管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BAUI"><span class="nav-number">5.1.1.</span> <span class="nav-text">显示UI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%97%ADUI"><span class="nav-number">5.1.2.</span> <span class="nav-text">关闭UI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%80%E6%AF%81UI"><span class="nav-number">5.1.3.</span> <span class="nav-text">销毁UI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIMultiInstanceManager-%E5%A4%9A%E5%AE%9E%E4%BE%8BUI%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">5.2.</span> <span class="nav-text">UIMultiInstanceManager - 多实例UI管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%A4%9A%E5%AE%9E%E4%BE%8BUI"><span class="nav-number">5.2.1.</span> <span class="nav-text">显示多实例UI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E7%AE%A1%E7%90%86"><span class="nav-number">5.2.2.</span> <span class="nav-text">实例管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIBase-UI%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB%EF%BC%88%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E7%BB%A7%E6%89%BF%EF%BC%89"><span class="nav-number">5.3.</span> <span class="nav-text">UIBase - UI抽象基类（不能直接继承）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E8%AF%B4%E6%98%8E"><span class="nav-number">5.3.1.</span> <span class="nav-text">继承关系说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E5%8A%9F%E8%83%BD"><span class="nav-number">5.3.2.</span> <span class="nav-text">新增功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD"><span class="nav-number">5.3.3.</span> <span class="nav-text">基础功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E6%8E%A7%E5%88%B6"><span class="nav-number">5.3.4.</span> <span class="nav-text">动画控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIAnimation-%E5%8A%A8%E7%94%BB%E9%85%8D%E7%BD%AE%E7%BB%84%E4%BB%B6"><span class="nav-number">5.4.</span> <span class="nav-text">UIAnimation - 动画配置组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE"><span class="nav-number">5.4.1.</span> <span class="nav-text">属性配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E5%85%B1%E6%96%B9%E6%B3%95"><span class="nav-number">5.4.2.</span> <span class="nav-text">公共方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">示例代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%ACUI%E4%BD%BF%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">基本UI使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89UI%E7%B1%BB"><span class="nav-number">6.2.</span> <span class="nav-text">自定义UI类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%BE%8BUI%E7%A4%BA%E4%BE%8B%EF%BC%88%E7%BB%A7%E6%89%BFUIBaseSingleton%EF%BC%89"><span class="nav-number">6.2.1.</span> <span class="nav-text">单例UI示例（继承UIBaseSingleton）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%AE%9E%E4%BE%8BUI%E7%A4%BA%E4%BE%8B%EF%BC%88%E7%BB%A7%E6%89%BFUIBaseMultiple%EF%BC%89"><span class="nav-number">6.2.2.</span> <span class="nav-text">多实例UI示例（继承UIBaseMultiple）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B"><span class="nav-number">6.3.</span> <span class="nav-text">动画配置示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BD%8D%E7%BD%AE%E5%8A%A8%E7%94%BB"><span class="nav-number">6.4.</span> <span class="nav-text">使用自定义位置动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BC%93%E5%8A%A8%E6%9B%B2%E7%BA%BF"><span class="nav-number">6.5.</span> <span class="nav-text">使用自定义缓动曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E7%A9%BA%E9%97%B4UI%E8%B7%9F%E8%B8%AA%E7%A4%BA%E4%BE%8B"><span class="nav-number">6.6.</span> <span class="nav-text">世界空间UI跟踪示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">7.</span> <span class="nav-text">最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="nav-number">7.1.</span> <span class="nav-text">1. 资源管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">7.2.</span> <span class="nav-text">2. 性能优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">7.3.</span> <span class="nav-text">3. 错误处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3"><span class="nav-number">8.</span> <span class="nav-text">编辑器工具详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Check-Addressable-AssetsFix"><span class="nav-number">8.1.</span> <span class="nav-text">1. Check Addressable AssetsFix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Create-Canvas-Structure"><span class="nav-number">8.2.</span> <span class="nav-text">2. Create Canvas Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Create-UI-Panel-Object"><span class="nav-number">8.3.</span> <span class="nav-text">3. Create UI Panel Object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Create-UI-Panel-Script"><span class="nav-number">8.4.</span> <span class="nav-text">4. Create UI Panel Script</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Path-UI-Crawler-V1-0"><span class="nav-number">8.5.</span> <span class="nav-text">5. Path UI Crawler V1.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Sample-Setup-Panel-Addressables"><span class="nav-number">8.6.</span> <span class="nav-text">6. Sample Setup Panel Addressables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E5%9C%BA%E6%99%AF%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="nav-number">9.</span> <span class="nav-text">示例场景使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E7%94%A8%E7%A4%BA%E4%BE%8B%E5%9C%BA%E6%99%AF"><span class="nav-number">9.1.</span> <span class="nav-text">可用示例场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4"><span class="nav-number">9.2.</span> <span class="nav-text">配置步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%96%E7%95%8C%E7%A9%BA%E9%97%B4UI%E8%B7%9F%E8%B8%AA%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3"><span class="nav-number">9.3.</span> <span class="nav-text">世界空间UI跟踪功能详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UIAddressableAssetChecker-%E7%B1%BB"><span class="nav-number">9.3.1.</span> <span class="nav-text">UIAddressableAssetChecker 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8%E6%A3%80%E6%9F%A5"><span class="nav-number">9.3.2.</span> <span class="nav-text">自动启动检查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE%E9%80%89%E9%A1%B9"><span class="nav-number">9.4.</span> <span class="nav-text">高级配置选项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Canvas%E5%88%9B%E5%BB%BA"><span class="nav-number">9.4.1.</span> <span class="nav-text">自定义Canvas创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89UI%E5%B1%82%E7%BA%A7"><span class="nav-number">9.4.2.</span> <span class="nav-text">自定义UI层级</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3UI%E9%87%8D%E5%A4%8D%E5%8A%A0%E8%BD%BD%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">10.1.</span> <span class="nav-text">Q: 如何解决UI重复加载的问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89UI%E5%8A%A8%E7%94%BB%EF%BC%9F"><span class="nav-number">10.2.</span> <span class="nav-text">Q: 如何自定义UI动画？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86UI%E5%B1%82%E7%BA%A7%E5%86%B2%E7%AA%81%EF%BC%9F"><span class="nav-number">10.3.</span> <span class="nav-text">Q: 如何处理UI层级冲突？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96UI%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="nav-number">10.4.</span> <span class="nav-text">Q: 如何优化UI性能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8A%A8%E7%94%BB%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="nav-number">10.5.</span> <span class="nav-text">Q: 子组件动画如何工作？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E7%BC%96%E8%BE%91%E5%99%A8%E5%B7%A5%E5%85%B7%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">10.6.</span> <span class="nav-text">Q: 编辑器工具无法正常工作怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-UILoginAnimation%E9%85%8D%E7%BD%AE%E5%A4%B1%E8%B4%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">10.7.</span> <span class="nav-text">Q: UILoginAnimation配置失败怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Canvas%E5%88%9B%E5%BB%BA%E5%A4%B1%E8%B4%A5%E6%88%96%E5%B1%82%E7%BA%A7%E9%94%99%E8%AF%AF%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">10.8.</span> <span class="nav-text">Q: Canvas创建失败或层级错误怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E7%BC%96%E8%BE%91%E5%99%A8%E5%90%AF%E5%8A%A8%E6%97%B6%E6%A3%80%E6%9F%A5%E5%A4%B1%E8%B4%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">10.9.</span> <span class="nav-text">Q: 编辑器启动时检查失败怎么办？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81"><span class="nav-number">11.</span> <span class="nav-text">技术支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">11.1.</span> <span class="nav-text">快速入门流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B"><span class="nav-number">11.2.</span> <span class="nav-text">批量操作示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="nav-number">11.3.</span> <span class="nav-text">自定义配置修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="nav-number">11.4.</span> <span class="nav-text">调试技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E7%BC%96%E8%BE%91%E5%99%A8%E5%B7%A5%E5%85%B7%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F-1"><span class="nav-number">11.5.</span> <span class="nav-text">Q: 编辑器工具无法正常工作怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-UILoginAnimation%E9%85%8D%E7%BD%AE%E5%A4%B1%E8%B4%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F-1"><span class="nav-number">11.6.</span> <span class="nav-text">Q: UILoginAnimation配置失败怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Canvas%E5%88%9B%E5%BB%BA%E5%A4%B1%E8%B4%A5%E6%88%96%E5%B1%82%E7%BA%A7%E9%94%99%E8%AF%AF%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F-1"><span class="nav-number">11.7.</span> <span class="nav-text">Q: Canvas创建失败或层级错误怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E7%BC%96%E8%BE%91%E5%99%A8%E5%90%AF%E5%8A%A8%E6%97%B6%E6%A3%80%E6%9F%A5%E5%A4%B1%E8%B4%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F-1"><span class="nav-number">11.8.</span> <span class="nav-text">Q: 编辑器启动时检查失败怎么办？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81-1"><span class="nav-number">12.</span> <span class="nav-text">技术支持</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MrZhai"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">MrZhai</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
       </div>
     </div>
-  </div>
-</header>
 
-      <div class="outer">
-        <section id="main"><article id="post-AnimaFlow-UI" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/01/21/AnimaFlow-UI/" class="article-date">
-  <time class="dt-published" datetime="2026-01-21T15:16:04.000Z" itemprop="datePublished">2026-01-21</time>
-</a>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      AnimaFlow UI
-    </h1>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
   
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/21/AnimaFlow-UI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MrZhai">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vertext Log">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="AnimaFlow UI | Vertext Log">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AnimaFlow UI
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-        <blockquote>
+
+      <time title="创建时间：2026-01-21 23:16:04 / 修改时间：23:26:20" itemprop="dateCreated datePublished" datetime="2026-01-21T23:16:04+08:00">2026-01-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
 <p>一个功能强大、易于使用的Unity UI管理和动画框架</p>
 </blockquote>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
@@ -545,122 +663,72 @@
 <li><strong>查看示例场景</strong>: 在<code>Assets/AnimaFlowUI/Samples/</code>中查看完整示例</li>
 <li><strong>API文档</strong>: 参考本文档的API部分</li>
 <li><strong>作者博客</strong>: <a target="_blank" rel="noopener" href="https://iamzhai.github.io/">https://iamzhai.github.io/</a></li>
-<li><strong>联系邮箱</strong>: <a href="mailto:&#x7a;&#104;&#x61;&#105;&#x6a;&#105;&#97;&#110;&#119;&#x65;&#x69;&#x35;&#x30;&#50;&#x40;&#49;&#54;&#x33;&#x2e;&#x63;&#111;&#109;">zhaijianwei502@163.com</a></li>
+<li><strong>联系邮箱</strong>: <a href="mailto:&#x7a;&#104;&#x61;&#x69;&#106;&#x69;&#97;&#x6e;&#119;&#101;&#x69;&#x35;&#x30;&#x32;&#x40;&#49;&#x36;&#51;&#46;&#99;&#111;&#109;">zhaijianwei502@163.com</a></li>
 </ol>
 <hr>
 <p><strong>AnimaFlow UI</strong> - 让UI开发变得更简单！</p>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/21/AnimaFlow-UI/" data-id="cuidq08OTym_2bi_kmiY0HA5N" data-title="AnimaFlow UI" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/01/21/DataBaker/" rel="next" title="DataBaker">
+                  DataBaker <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MrZhai</span>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2026/01/21/DataBaker/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          DataBaker
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/01/21/DataBaker/">DataBaker</a>
-          </li>
-        
-          <li>
-            <a href="/2026/01/21/AnimaFlow-UI/">AnimaFlow UI</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
 
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
+  </footer>
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
 </body>
 </html>
