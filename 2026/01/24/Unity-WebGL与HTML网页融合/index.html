@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple_touch.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16_16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="从iframe到乾坤框架的进阶之路前言在Web开发领域,Unity WebGL为游戏和3D内容提供了强大的渲染能力,但在传统HTML网页开发方面却相对薄弱。图标绘制、UI布局等日常任务在Unity中实现远不如HTML便捷。如何在保持Unity强大3D渲染能力的同时,利用HTML的灵活性,成为WebGL项目开发中的常见挑战。本文将分享从iframe到乾坤框架(Qiankun)的解决方案演进历程。 一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity WebGL与HTML网页融合">
+<meta property="og:url" content="http://example.com/2026/01/24/Unity-WebGL%E4%B8%8EHTML%E7%BD%91%E9%A1%B5%E8%9E%8D%E5%90%88/index.html">
+<meta property="og:site_name" content="Vertext Log">
+<meta property="og:description" content="从iframe到乾坤框架的进阶之路前言在Web开发领域,Unity WebGL为游戏和3D内容提供了强大的渲染能力,但在传统HTML网页开发方面却相对薄弱。图标绘制、UI布局等日常任务在Unity中实现远不如HTML便捷。如何在保持Unity强大3D渲染能力的同时,利用HTML的灵活性,成为WebGL项目开发中的常见挑战。本文将分享从iframe到乾坤框架(Qiankun)的解决方案演进历程。 一">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-24T11:14:05.000Z">
+<meta property="article:modified_time" content="2026-01-24T11:19:07.018Z">
+<meta property="article:author" content="MrZhai">
+<meta property="article:tag" content="webgl">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2026/01/24/Unity-WebGL%E4%B8%8EHTML%E7%BD%91%E9%A1%B5%E8%9E%8D%E5%90%88/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/01/24/Unity-WebGL%E4%B8%8EHTML%E7%BD%91%E9%A1%B5%E8%9E%8D%E5%90%88/","path":"2026/01/24/Unity-WebGL与HTML网页融合/","title":"Unity WebGL与HTML网页融合"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Unity WebGL与HTML网页融合 | Vertext Log</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Vertext Log</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8Eiframe%E5%88%B0%E4%B9%BE%E5%9D%A4%E6%A1%86%E6%9E%B6%E7%9A%84%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">从iframe到乾坤框架的进阶之路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%9D%E6%8E%A2-iframe%E6%96%B9%E6%A1%88%E7%9A%84%E5%B1%80%E9%99%90"><span class="nav-number">3.</span> <span class="nav-text">一、初探:iframe方案的局限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E6%9E%84%E6%80%9D"><span class="nav-number">3.1.</span> <span class="nav-text">方案构思</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9B%B0%E5%A2%83"><span class="nav-number">3.2.</span> <span class="nav-text">遇到的困境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BA%8B%E4%BB%B6%E7%A9%BF%E9%80%8F%E7%9A%84%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 事件穿透的复杂性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1%E7%9A%84%E5%BC%82%E6%AD%A5%E5%BB%B6%E8%BF%9F"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 消息通信的异步延迟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%B7%A8%E5%9F%9F%E9%99%90%E5%88%B6%E4%B8%8E%E8%B0%83%E8%AF%95%E5%9B%B0%E9%9A%BE"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. 跨域限制与调试困难</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%A0%B7%E5%BC%8F%E9%9A%94%E7%A6%BB%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E9%80%82%E9%85%8D"><span class="nav-number">3.2.4.</span> <span class="nav-text">4. 样式隔离与响应式适配</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BD%AC%E6%9C%BA-%E4%B9%BE%E5%9D%A4%E6%A1%86%E6%9E%B6%E7%9A%84%E5%BC%95%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">二、转机:乾坤框架的引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Qiankun%E7%AE%80%E4%BB%8B"><span class="nav-number">4.1.</span> <span class="nav-text">Qiankun简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF"><span class="nav-number">4.2.</span> <span class="nav-text">核心优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%96%B9%E6%A1%88%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8EQiankun%E7%9A%84%E8%9E%8D%E5%90%88%E6%9E%B6%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">三、方案实现:基于Qiankun的融合架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">5.1.</span> <span class="nav-text">架构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%BA%94%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">主应用配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%BA%94%E7%94%A8%E6%A8%A1%E6%9D%BF"><span class="nav-number">5.3.</span> <span class="nav-text">主应用模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unity-WebGL%E4%BD%9C%E4%B8%BA%E5%AD%90%E5%BA%94%E7%94%A8"><span class="nav-number">5.4.</span> <span class="nav-text">Unity WebGL作为子应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="nav-number">5.5.</span> <span class="nav-text">通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%A8%E5%B1%80%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="nav-number">5.5.1.</span> <span class="nav-text">1. 全局状态管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.5.2.</span> <span class="nav-text">2. 自定义事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8"><span class="nav-number">5.5.3.</span> <span class="nav-text">3. 直接调用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94-iframe-vs-Qiankun"><span class="nav-number">6.</span> <span class="nav-text">四、方案对比:iframe vs Qiankun</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%AE%9E%E8%B7%B5%E4%B8%AD%E7%9A%84%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="nav-number">7.</span> <span class="nav-text">五、实践中的优化技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Unity-Canvas%E5%B0%BA%E5%AF%B8%E8%87%AA%E9%80%82%E5%BA%94"><span class="nav-number">7.1.</span> <span class="nav-text">1. Unity Canvas尺寸自适应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%81%BF%E5%85%8D%E6%A0%B7%E5%BC%8F%E5%86%B2%E7%AA%81"><span class="nav-number">7.2.</span> <span class="nav-text">2. 避免样式冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%B5%84%E6%BA%90%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">7.3.</span> <span class="nav-text">3. 资源预加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%94%99%E8%AF%AF%E8%BE%B9%E7%95%8C%E5%A4%84%E7%90%86"><span class="nav-number">7.4.</span> <span class="nav-text">4. 错误边界处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">六、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MrZhai"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">MrZhai</p>
+  <div class="site-description" itemprop="description">记录生活，分享技术</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/zhaijianwei502@163.com" title="E-Mail → zhaijianwei502@163.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/24/Unity-WebGL%E4%B8%8EHTML%E7%BD%91%E9%A1%B5%E8%9E%8D%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="MrZhai">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vertext Log">
+      <meta itemprop="description" content="记录生活，分享技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Unity WebGL与HTML网页融合 | Vertext Log">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Unity WebGL与HTML网页融合
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-01-24 19:14:05 / 修改时间：19:19:07" itemprop="dateCreated datePublished" datetime="2026-01-24T19:14:05+08:00">2026-01-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Unity开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="从iframe到乾坤框架的进阶之路"><a href="#从iframe到乾坤框架的进阶之路" class="headerlink" title="从iframe到乾坤框架的进阶之路"></a>从iframe到乾坤框架的进阶之路</h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在Web开发领域,Unity WebGL为游戏和3D内容提供了强大的渲染能力,但在传统HTML网页开发方面却相对薄弱。图标绘制、UI布局等日常任务在Unity中实现远不如HTML便捷。如何在保持Unity强大3D渲染能力的同时,利用HTML的灵活性,成为WebGL项目开发中的常见挑战。本文将分享从iframe到乾坤框架(Qiankun)的解决方案演进历程。</p>
+<h2 id="一、初探-iframe方案的局限"><a href="#一、初探-iframe方案的局限" class="headerlink" title="一、初探:iframe方案的局限"></a>一、初探:iframe方案的局限</h2><h3 id="方案构思"><a href="#方案构思" class="headerlink" title="方案构思"></a>方案构思</h3><p>iframe是最直观的混合方案:将Unity WebGL嵌入到传统网页的iframe中,HTML元素则通过CSS绝对定位叠加在iframe之上。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;unity-frame&quot;</span> <span class="attr">src</span>=<span class="string">&quot;unity-build/index.html&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;html-overlay&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- HTML图标和UI --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;icon-menu&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.container</span> &#123; <span class="attribute">position</span>: relative; <span class="attribute">width</span>: <span class="number">100%</span>; <span class="attribute">height</span>: <span class="number">100vh</span>; &#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-id">#unity-frame</span> &#123; <span class="attribute">width</span>: <span class="number">100%</span>; <span class="attribute">height</span>: <span class="number">100%</span>; <span class="attribute">border</span>: none; &#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-class">.html-overlay</span> &#123; </span></span><br><span class="line"><span class="language-css">  <span class="attribute">position</span>: absolute; </span></span><br><span class="line"><span class="language-css">  <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; </span></span><br><span class="line"><span class="language-css">  <span class="attribute">pointer-events</span>: none; <span class="comment">/* 让事件穿透到Unity */</span></span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-class">.html-overlay</span> &gt; * &#123; <span class="attribute">pointer-events</span>: auto; <span class="comment">/* 恢复子元素事件 */</span> &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="遇到的困境"><a href="#遇到的困境" class="headerlink" title="遇到的困境"></a>遇到的困境</h3><p>实际开发中,iframe方案暴露出多个棘手问题:</p>
+<h4 id="1-事件穿透的复杂性"><a href="#1-事件穿透的复杂性" class="headerlink" title="1. 事件穿透的复杂性"></a>1. 事件穿透的复杂性</h4><p>虽然通过<code>pointer-events</code>可以实现事件穿透,但需要精细控制:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.html-overlay</span> &#123; <span class="attribute">pointer-events</span>: none; &#125;</span><br><span class="line"><span class="selector-class">.html-overlay</span> <span class="selector-tag">button</span> &#123; <span class="attribute">pointer-events</span>: auto; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式在简单场景下可行,但当HTML元素需要与Unity中的3D对象进行复杂交互(如拖拽UI元素到3D场景)时,事件处理变得极其复杂。</p>
+<h4 id="2-消息通信的异步延迟"><a href="#2-消息通信的异步延迟" class="headerlink" title="2. 消息通信的异步延迟"></a>2. 消息通信的异步延迟</h4><p>iframe之间的通信依赖<code>postMessage</code>,这本质上是异步的:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HTML父页面向Unity发送消息</span></span><br><span class="line"><span class="keyword">const</span> unityFrame = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;unity-frame&#x27;</span>);</span><br><span class="line">unityFrame.<span class="property">contentWindow</span>.<span class="title function_">postMessage</span>(&#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;UPDATE_SCORE&#x27;</span>,</span><br><span class="line">  <span class="attr">value</span>: <span class="number">100</span></span><br><span class="line">&#125;, <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unity接收消息</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (event.<span class="property">data</span>.<span class="property">type</span> === <span class="string">&#x27;UPDATE_SCORE&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// 更新Unity中的分数显示</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>异步通信在需要即时反馈的场景(如实时同步分数、状态)中,会造成明显的延迟感。</p>
+<h4 id="3-跨域限制与调试困难"><a href="#3-跨域限制与调试困难" class="headerlink" title="3. 跨域限制与调试困难"></a>3. 跨域限制与调试困难</h4><p>iframe的跨域策略限制了父子页面之间的交互:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在某些浏览器中,以下代码会因跨域而失败</span></span><br><span class="line"><span class="keyword">const</span> unityInstance = unityFrame.<span class="property">contentWindow</span>.<span class="property">unityInstance</span>;</span><br><span class="line">unityInstance.<span class="title class_">SendMessage</span>(<span class="string">&#x27;GameManager&#x27;</span>, <span class="string">&#x27;SetScore&#x27;</span>, <span class="string">&#x27;100&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>同时,iframe内的调试需要单独打开开发者工具,无法在同一个窗口中同时查看HTML和Unity的日志。</p>
+<h4 id="4-样式隔离与响应式适配"><a href="#4-样式隔离与响应式适配" class="headerlink" title="4. 样式隔离与响应式适配"></a>4. 样式隔离与响应式适配</h4><p>iframe内的样式完全独立,需要确保Unity的Canvas与父页面的尺寸完全匹配:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监听窗口大小变化</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;resize&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> frame = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;unity-frame&#x27;</span>);</span><br><span class="line">  frame.<span class="property">style</span>.<span class="property">height</span> = <span class="variable language_">window</span>.<span class="property">innerHeight</span> + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在移动端,软键盘弹出、地址栏隐藏等场景下,iframe的尺寸计算容易出现偏差。</p>
+<h2 id="二、转机-乾坤框架的引入"><a href="#二、转机-乾坤框架的引入" class="headerlink" title="二、转机:乾坤框架的引入"></a>二、转机:乾坤框架的引入</h2><h3 id="Qiankun简介"><a href="#Qiankun简介" class="headerlink" title="Qiankun简介"></a>Qiankun简介</h3><p>乾坤(Qiankun)是阿里巴巴开源的微前端框架,基于single-spa封装,提供了开箱即用的微前端解决方案。它支持Vue、React、Angular等多种框架共存,并能将不同技术栈的应用融合为统一的用户体验。</p>
+<h3 id="核心优势"><a href="#核心优势" class="headerlink" title="核心优势"></a>核心优势</h3><ol>
+<li><strong>JS沙箱隔离</strong>:确保子应用之间的全局变量不会冲突</li>
+<li><strong>样式隔离</strong>:通过CSS Scoped或Shadow DOM实现样式互不干扰</li>
+<li><strong>生命周期管理</strong>:自动管理子应用的加载、挂载、卸载</li>
+<li><strong>预加载</strong>:支持子应用的提前加载,提升首次打开速度</li>
+<li><strong>通信机制</strong>:提供统一的通信API,简化跨应用交互</li>
+</ol>
+<h2 id="三、方案实现-基于Qiankun的融合架构"><a href="#三、方案实现-基于Qiankun的融合架构" class="headerlink" title="三、方案实现:基于Qiankun的融合架构"></a>三、方案实现:基于Qiankun的融合架构</h2><h3 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">主应用(HTML/React/Vue)</span><br><span class="line">├── Unity WebGL子应用</span><br><span class="line">└── 其他功能子应用(可选)</span><br></pre></td></tr></table></figure>
+
+<h3 id="主应用配置"><a href="#主应用配置" class="headerlink" title="主应用配置"></a>主应用配置</h3><p>以Vue 3为例,配置主应用:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; registerMicroApps, start &#125; <span class="keyword">from</span> <span class="string">&#x27;qiankun&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册微应用</span></span><br><span class="line"><span class="title function_">registerMicroApps</span>([</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;unity-app&#x27;</span>,</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;//localhost:5500/unity-build/&#x27;</span>, <span class="comment">// Unity WebGL构建输出目录</span></span><br><span class="line">    <span class="attr">container</span>: <span class="string">&#x27;#unity-container&#x27;</span>,</span><br><span class="line">    <span class="attr">activeRule</span>: <span class="string">&#x27;/unity&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动微前端</span></span><br><span class="line"><span class="title function_">start</span>()</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="主应用模板"><a href="#主应用模板" class="headerlink" title="主应用模板"></a>主应用模板</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;app-container&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;html-layer&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;icon-menu&quot;&gt;</span><br><span class="line">          &lt;!-- 使用HTML绘制图标 --&gt;</span><br><span class="line">          &lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;</span><br><span class="line">            &lt;path d=&quot;M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z&quot;/&gt;</span><br><span class="line">          &lt;/svg&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;game-ui&quot;&gt;</span><br><span class="line">        &lt;button @click=&quot;sendToUnity&quot;&gt;升级&lt;/button&gt;</span><br><span class="line">        &lt;div class=&quot;score-display&quot;&gt;分数: &#123;&#123; score &#125;&#125;&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;unity-container&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ref, onMounted &#125; from &#x27;vue&#x27;</span><br><span class="line">import actions from &#x27;./actions&#x27;</span><br><span class="line"></span><br><span class="line">const score = ref(0)</span><br><span class="line"></span><br><span class="line">// 发送消息到Unity</span><br><span class="line">const sendToUnity = () =&gt; &#123;</span><br><span class="line">  actions.onGlobalStateChange(&#123; score: score.value + 10 &#125;)</span><br><span class="line">  window.gameInstance?.SendMessage(&#x27;GameManager&#x27;, &#x27;Upgrade&#x27;, &#x27;&#x27;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 接收Unity消息</span><br><span class="line">onMounted(() =&gt; &#123;</span><br><span class="line">  actions.onGlobalStateChange((state) =&gt; &#123;</span><br><span class="line">    if (state.score !== undefined) &#123;</span><br><span class="line">      score.value = state.score</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.app-container &#123; position: relative; width: 100%; height: 100vh; &#125;</span><br><span class="line">.html-layer &#123; </span><br><span class="line">  position: absolute; </span><br><span class="line">  top: 0; left: 0; </span><br><span class="line">  width: 100%; </span><br><span class="line">  z-index: 10;</span><br><span class="line">&#125;</span><br><span class="line">#unity-container &#123; </span><br><span class="line">  width: 100%; </span><br><span class="line">  height: 100%; </span><br><span class="line">  z-index: 1;</span><br><span class="line">&#125;</span><br><span class="line">.icon &#123; width: 32px; height: 32px; fill: white; &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Unity-WebGL作为子应用"><a href="#Unity-WebGL作为子应用" class="headerlink" title="Unity WebGL作为子应用"></a>Unity WebGL作为子应用</h3><p>Unity WebGL需要包装成微前端可识别的格式。创建一个适配文件:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// unity-build/public-path.js</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">__POWERED_BY_QIANKUN__</span>) &#123;</span><br><span class="line">  __webpack_public_path__ = <span class="variable language_">window</span>.<span class="property">__INJECTED_PUBLIC_PATH_BY_QIANKUN__</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// unity-build/main.js</span></span><br><span class="line"><span class="keyword">let</span> gameInstance = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">mount</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> container = props.<span class="property">container</span> ? props.<span class="property">container</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#unity-container&#x27;</span>) : <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;unity-container&#x27;</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">  script.<span class="property">src</span> = <span class="string">&#x27;Build/UnityLoader.js&#x27;</span>;</span><br><span class="line">  script.<span class="property">onload</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title class_">UnityLoader</span>.<span class="title function_">instantiate</span>(<span class="string">&#x27;unity-canvas&#x27;</span>, <span class="string">&#x27;Build/game.json&#x27;</span>, &#123;</span><br><span class="line">      <span class="attr">onProgress</span>: <span class="function">(<span class="params">progress</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Unity加载进度:&#x27;</span>, progress);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">onSuccess</span>: <span class="function">(<span class="params">instance</span>) =&gt;</span> &#123;</span><br><span class="line">        gameInstance = instance;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">gameInstance</span> = instance;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 初始化与主应用的通信</span></span><br><span class="line">        props.<span class="title function_">onGlobalStateChange</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (state.<span class="property">score</span> !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            instance.<span class="title class_">SendMessage</span>(<span class="string">&#x27;UIManager&#x27;</span>, <span class="string">&#x27;UpdateScore&#x27;</span>, state.<span class="property">score</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;, <span class="literal">true</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (container) &#123;</span><br><span class="line">    container.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;div id=&quot;unity-canvas&quot;&gt;&lt;/div&gt;&#x27;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">head</span>.<span class="title function_">appendChild</span>(script);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">unmount</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (gameInstance) &#123;</span><br><span class="line">    gameInstance.<span class="title class_">Quit</span>();</span><br><span class="line">    gameInstance = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">gameInstance</span> = <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 独立运行时的挂载</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="variable language_">window</span>.<span class="property">__POWERED_BY_QIANKUN__</span>) &#123;</span><br><span class="line">  <span class="title function_">mount</span>(&#123; <span class="attr">container</span>: <span class="literal">null</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// unity-build/qiankun-entry.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./public-path&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; mount, unmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./main&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; mount, unmount &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="通信机制"><a href="#通信机制" class="headerlink" title="通信机制"></a>通信机制</h3><p>Qiankun提供了多种通信方式:</p>
+<h4 id="1-全局状态管理"><a href="#1-全局状态管理" class="headerlink" title="1. 全局状态管理"></a>1. 全局状态管理</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主应用</span></span><br><span class="line"><span class="keyword">import</span> &#123; initGlobalState &#125; <span class="keyword">from</span> <span class="string">&#x27;qiankun&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> actions = <span class="title function_">initGlobalState</span>(&#123;</span><br><span class="line">  <span class="attr">score</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">gameState</span>: <span class="string">&#x27;playing&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unity子应用</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">mount</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  props.<span class="title function_">onGlobalStateChange</span>(<span class="function">(<span class="params">state, prevState</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;状态变更:&#x27;</span>, state);</span><br><span class="line">    <span class="comment">// 更新Unity UI</span></span><br><span class="line">  &#125;, <span class="literal">true</span>)</span><br><span class="line">  </span><br><span class="line">  props.<span class="title function_">setGlobalState</span>(&#123; <span class="attr">score</span>: <span class="number">100</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-自定义事件"><a href="#2-自定义事件" class="headerlink" title="2. 自定义事件"></a>2. 自定义事件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主应用发送事件</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">CustomEvent</span>(<span class="string">&#x27;unity-event&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">detail</span>: &#123; <span class="attr">type</span>: <span class="string">&#x27;UPDATE_SCORE&#x27;</span>, <span class="attr">value</span>: <span class="number">100</span> &#125;</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unity子应用监听</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;unity-event&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (e.<span class="property">detail</span>.<span class="property">type</span> === <span class="string">&#x27;UPDATE_SCORE&#x27;</span>) &#123;</span><br><span class="line">    gameInstance.<span class="title class_">SendMessage</span>(<span class="string">&#x27;UIManager&#x27;</span>, <span class="string">&#x27;UpdateScore&#x27;</span>, e.<span class="property">detail</span>.<span class="property">value</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-直接调用"><a href="#3-直接调用" class="headerlink" title="3. 直接调用"></a>3. 直接调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主应用直接调用Unity</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">gameInstance</span>.<span class="title class_">SendMessage</span>(<span class="string">&#x27;GameManager&#x27;</span>, <span class="string">&#x27;StartGame&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Unity调用主应用</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">updateScore</span> = <span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">CustomEvent</span>(<span class="string">&#x27;score-update&#x27;</span>, &#123; <span class="attr">detail</span>: value &#125;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、方案对比-iframe-vs-Qiankun"><a href="#四、方案对比-iframe-vs-Qiankun" class="headerlink" title="四、方案对比:iframe vs Qiankun"></a>四、方案对比:iframe vs Qiankun</h2><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>iframe方案</th>
+<th>Qiankun方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通信方式</td>
+<td>postMessage(异步)</td>
+<td>全局状态+自定义事件(同步&#x2F;异步)</td>
+</tr>
+<tr>
+<td>事件穿透</td>
+<td>需要CSS pointer-events控制</td>
+<td>DOM在同一上下文中,自然交互</td>
+</tr>
+<tr>
+<td>跨域限制</td>
+<td>存在跨域问题</td>
+<td>通过JS沙箱隔离,无跨域问题</td>
+</tr>
+<tr>
+<td>调试体验</td>
+<td>需要切换开发者工具</td>
+<td>统一调试窗口,日志集中</td>
+</tr>
+<tr>
+<td>样式隔离</td>
+<td>完全隔离</td>
+<td>通过Scoped CSS或Shadow DOM</td>
+</tr>
+<tr>
+<td>性能开销</td>
+<td>多个iframe有性能损耗</td>
+<td>共享主线程,性能更优</td>
+</tr>
+<tr>
+<td>代码复用</td>
+<td>难以共享代码</td>
+<td>可共享公共依赖库</td>
+</tr>
+<tr>
+<td>首屏加载</td>
+<td>独立加载,较慢</td>
+<td>支持预加载,更快</td>
+</tr>
+</tbody></table>
+<h2 id="五、实践中的优化技巧"><a href="#五、实践中的优化技巧" class="headerlink" title="五、实践中的优化技巧"></a>五、实践中的优化技巧</h2><h3 id="1-Unity-Canvas尺寸自适应"><a href="#1-Unity-Canvas尺寸自适应" class="headerlink" title="1. Unity Canvas尺寸自适应"></a>1. Unity Canvas尺寸自适应</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在Unity子应用中监听窗口变化</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;resize&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;unity-canvas&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span> (canvas) &#123;</span><br><span class="line">    canvas.<span class="property">style</span>.<span class="property">width</span> = <span class="string">&#x27;100%&#x27;</span>;</span><br><span class="line">    canvas.<span class="property">style</span>.<span class="property">height</span> = <span class="string">&#x27;100%&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-避免样式冲突"><a href="#2-避免样式冲突" class="headerlink" title="2. 避免样式冲突"></a>2. 避免样式冲突</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 使用CSS Modules或Scoped CSS */</span></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"><span class="selector-class">.game-ui</span> &#123;</span><br><span class="line">  <span class="comment">/* 这里的样式不会影响Unity的样式 */</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-资源预加载"><a href="#3-资源预加载" class="headerlink" title="3. 资源预加载"></a>3. 资源预加载</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">registerMicroApps</span>([</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;unity-app&#x27;</span>,</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;//localhost:5500/unity-build/&#x27;</span>,</span><br><span class="line">    <span class="attr">container</span>: <span class="string">&#x27;#unity-container&#x27;</span>,</span><br><span class="line">    <span class="attr">activeRule</span>: <span class="string">&#x27;/unity&#x27;</span>,</span><br><span class="line">    <span class="attr">props</span>: &#123; <span class="attr">preload</span>: <span class="literal">true</span> &#125; <span class="comment">// 启用预加载</span></span><br><span class="line">  &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-错误边界处理"><a href="#4-错误边界处理" class="headerlink" title="4. 错误边界处理"></a>4. 错误边界处理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">start</span>(&#123;</span><br><span class="line">  <span class="attr">sandbox</span>: &#123;</span><br><span class="line">    <span class="attr">strictStyleIsolation</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">experimentalStyleIsolation</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>从iframe到Qiankun的演进,本质上是从”页面嵌套”到”应用融合”的转变。iframe方案虽然简单直接,但在事件交互、通信性能、调试体验等方面存在诸多限制。Qiankun框架通过微前端架构,将Unity WebGL与传统网页无缝融合,充分发挥了各自的优势。</p>
+<p>关键优势在于:</p>
+<ul>
+<li><strong>统一的开发体验</strong>:HTML和Unity在同一个上下文中开发</li>
+<li><strong>高效的通信机制</strong>:同步的状态管理和直接方法调用</li>
+<li><strong>灵活的样式控制</strong>:通过CSS层叠自然叠加,无需复杂的事件穿透</li>
+<li><strong>优秀的可维护性</strong>:代码共享、统一调试、模块化管理</li>
+</ul>
+<p>对于需要在WebGL项目中引入丰富HTML交互的场景,Qiankun微前端方案提供了一条清晰可行的路径,值得在实战中深入探索。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/webgl/" rel="tag"># webgl</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/01/23/%E4%B8%80%E7%A7%8D%E6%97%A0%E9%99%90%E5%BC%82%E6%AD%A5%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" rel="prev" title="一种无限异步状态机的工程实践">
+                  <i class="fa fa-angle-left"></i> 一种无限异步状态机的工程实践
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MrZhai</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
