@@ -22,27 +22,27 @@
 
     <meta name="description" content="解决Unity WebGL Addressable包缓存问题最近在开发Unity WebGL项目时，遇到了一个关于Addressable资源包更新的棘手问题。虽然我们每次更新Addressable包时都会生成新的catalog文件（如catalog_0.2.12.json），但浏览器却顽固地使用旧的settings.json文件，导致资源更新失败。 问题分析问题的根源在于浏览器对静态资源的缓存机制">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决Unity WebGL Addressable包缓存问题">
-<meta property="og:url" content="http://example.com/2026/02/06/unity-webgl-addressable-cache-solution/index.html">
+<meta property="og:title" content="Unity打包WebGL平台Addressable的缓存">
+<meta property="og:url" content="http://example.com/2026/02/06/Unity%E6%89%93%E5%8C%85WebGL%E5%B9%B3%E5%8F%B0Addressable%E7%9A%84%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="Vertext Log">
 <meta property="og:description" content="解决Unity WebGL Addressable包缓存问题最近在开发Unity WebGL项目时，遇到了一个关于Addressable资源包更新的棘手问题。虽然我们每次更新Addressable包时都会生成新的catalog文件（如catalog_0.2.12.json），但浏览器却顽固地使用旧的settings.json文件，导致资源更新失败。 问题分析问题的根源在于浏览器对静态资源的缓存机制">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2026/02/06/unity-webgl-addressable-cache-solution/res/Snipaste_2026-02-06_21-00-55.png">
-<meta property="article:published_time" content="2026-02-06T12:48:04.000Z">
-<meta property="article:modified_time" content="2026-02-06T13:04:30.234Z">
+<meta property="og:image" content="http://example.com/2026/02/06/Unity%E6%89%93%E5%8C%85WebGL%E5%B9%B3%E5%8F%B0Addressable%E7%9A%84%E7%BC%93%E5%AD%98/Snipaste_2026-02-06_21-00-55.png">
+<meta property="article:published_time" content="2026-02-06T13:16:21.000Z">
+<meta property="article:modified_time" content="2026-02-06T13:34:18.025Z">
 <meta property="article:author" content="MrZhai">
 <meta property="article:tag" content="WebGL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2026/02/06/unity-webgl-addressable-cache-solution/res/Snipaste_2026-02-06_21-00-55.png">
+<meta name="twitter:image" content="http://example.com/2026/02/06/Unity%E6%89%93%E5%8C%85WebGL%E5%B9%B3%E5%8F%B0Addressable%E7%9A%84%E7%BC%93%E5%AD%98/Snipaste_2026-02-06_21-00-55.png">
 
 
-<link rel="canonical" href="http://example.com/2026/02/06/unity-webgl-addressable-cache-solution/">
+<link rel="canonical" href="http://example.com/2026/02/06/Unity%E6%89%93%E5%8C%85WebGL%E5%B9%B3%E5%8F%B0Addressable%E7%9A%84%E7%BC%93%E5%AD%98/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/02/06/unity-webgl-addressable-cache-solution/","path":"2026/02/06/unity-webgl-addressable-cache-solution/","title":"解决Unity WebGL Addressable包缓存问题"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2026/02/06/Unity%E6%89%93%E5%8C%85WebGL%E5%B9%B3%E5%8F%B0Addressable%E7%9A%84%E7%BC%93%E5%AD%98/","path":"2026/02/06/Unity打包WebGL平台Addressable的缓存/","title":"Unity打包WebGL平台Addressable的缓存"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>解决Unity WebGL Addressable包缓存问题 | Vertext Log</title>
+<title>Unity打包WebGL平台Addressable的缓存 | Vertext Log</title>
   
 
 
@@ -190,7 +190,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2026/02/06/unity-webgl-addressable-cache-solution/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/02/06/Unity%E6%89%93%E5%8C%85WebGL%E5%B9%B3%E5%8F%B0Addressable%E7%9A%84%E7%BC%93%E5%AD%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -203,12 +203,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="解决Unity WebGL Addressable包缓存问题 | Vertext Log">
+      <meta itemprop="name" content="Unity打包WebGL平台Addressable的缓存 | Vertext Log">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          解决Unity WebGL Addressable包缓存问题
+          Unity打包WebGL平台Addressable的缓存
         </h1>
 
         <div class="post-meta-container">
@@ -220,7 +220,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2026-02-06 20:48:04 / 修改时间：21:04:30" itemprop="dateCreated datePublished" datetime="2026-02-06T20:48:04+08:00">2026-02-06</time>
+      <time title="创建时间：2026-02-06 21:16:21 / 修改时间：21:34:18" itemprop="dateCreated datePublished" datetime="2026-02-06T21:16:21+08:00">2026-02-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -257,8 +257,7 @@
 </ul>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>经过一番探索，公司同事找到了一个有效的解决方案：利用Unity WebGL的构建宏，确保每次打包都生成唯一的文件名，从而避免浏览器缓存。</p>
 <p>Unity的HTML模板本身就支持以下宏：</p>
-<img src="res\Snipaste_2026-02-06_21-00-55.png" style="zoom:50%;" />
-
+<p><img src="/2026/02/06/Unity%E6%89%93%E5%8C%85WebGL%E5%B9%B3%E5%8F%B0Addressable%E7%9A%84%E7%BC%93%E5%AD%98/Snipaste_2026-02-06_21-00-55.png" alt="Snipaste_2026-02-06_21-00-55"></p>
 <p>Unity的HTML模板会自动使用这些宏，无需手动替换。例如，模板中的代码：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;Build/&#123;&#123;&#123; LOADER_FILENAME &#125;&#125;&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">createUnityInstance(document.querySelector(&quot;#unity-canvas&quot;), &#123;</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    dataUrl: &quot;Build/</span><span class="template-variable">&#123;&#123;&#123; <span class="name">DATA_FILENAME</span> &#125;&#125;&#125;</span><span class="language-xml">&quot;,</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    frameworkUrl: &quot;Build/</span><span class="template-variable">&#123;&#123;&#123; <span class="name">FRAMEWORK_FILENAME</span> &#125;&#125;&#125;</span><span class="language-xml">&quot;,</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    #if USE_WASM</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    codeUrl: &quot;Build/</span><span class="template-variable">&#123;&#123;&#123; <span class="name">CODE_FILENAME</span> &#125;&#125;&#125;</span><span class="language-xml">&quot;,</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    #endif</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    ...</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">&#125;);</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -298,14 +297,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2026/01/24/Unity-WebGL%E4%B8%8EHTML%E7%BD%91%E9%A1%B5%E8%9E%8D%E5%90%88/" rel="prev" title="Unity WebGL与HTML网页融合">
-                  <i class="fa fa-angle-left"></i> Unity WebGL与HTML网页融合
+                <a href="/2026/02/06/unity-webgl-addressable-cache-solution/" rel="prev" title="解决Unity WebGL Addressable包缓存问题">
+                  <i class="fa fa-angle-left"></i> 解决Unity WebGL Addressable包缓存问题
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2026/02/06/Unity%E6%89%93%E5%8C%85WebGL%E5%B9%B3%E5%8F%B0Addressable%E7%9A%84%E7%BC%93%E5%AD%98/" rel="next" title="Unity打包WebGL平台Addressable的缓存">
-                  Unity打包WebGL平台Addressable的缓存 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
